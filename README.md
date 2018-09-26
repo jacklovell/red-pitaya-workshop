@@ -108,7 +108,7 @@ basic working instrument.
 Since the SDK is based on makefiles, building a design is a one-liner.
 From the `koheron-sdk` directory, run the following command:
 
-```make VIVADO_VERSION=2017.4 CONFIG=examples/red-pitaya/led-blinker/config.yml```
+`make VIVADO_VERSION=2017.4 CONFIG=examples/red-pitaya/led-blinker/config.yml`
 
 This command will do the following:
 
@@ -131,7 +131,7 @@ step can be automated.
 The following command will, in addition to building the instrument,
 copy the output files onto the Red Pitaya and load the instrument up:
 
-```make VIVADO_VERSION=2017.4 CONFIG=examples/red-pitaya/led-blinker/config.yml HOST=<IP of Red Pitaya> run```
+`make VIVADO_VERSION=2017.4 CONFIG=examples/red-pitaya/led-blinker/config.yml HOST=<IP of Red Pitaya> run`
 
 This can be particularly useful during development, as you can perform
 many design iterations.
@@ -165,8 +165,7 @@ mv instruments/adc-dac instruments/new
 1. Add `fpga/cores/boxcar_filter_v1_0` to the `cores` section in
    `config.yml`
 1. Build the block design:
-```make VIVADO_VERSION=2017.4 CONFIG=instruments/new/config.yml
-block_design```
+```make VIVADO_VERSION=2017.4 CONFIG=instruments/new/config.yml block_design```
 1. We now need to modify the block design. Add the boxcar filter IP
    (CTRL+I, type "boxcar" and double click the boxcar filter).
 1. Double click on the boxcar filter block, and change the data width
