@@ -52,7 +52,7 @@ development.
 
 The SDK is a collection of scripts and makefiles.
 It is available on Github, at
-[https://github.com/Koheron/koheron-sdk]().
+[https://github.com/Koheron/koheron-sdk](https://github.com/Koheron/koheron-sdk).
 
 To obtain the SDK, clone the Git repository to a local directory:
 
@@ -67,7 +67,7 @@ if it's not already installed.
 ## Key files in the SDK
 
 Start by looking at one of the example designs, in the
-[examples/red-pitaya/led-blinker]() directory.
+`examples/red-pitaya/led-blinker]` directory.
 You'll see that there are only a few files required to produce a
 basic working instrument.
 
@@ -197,6 +197,6 @@ easy to see what changes have been made.
 An alternative workflow is to make modifications to the original
 `block_design.tcl` by hand, using the functions Koheron provides as
 wrappers to Vivado's lower level TCL functions.
-You can see an example at [block_design.tcl]() in this repository,
+You can see an example at [block_design.tcl](block_design.tcl) in this repository,
 which I've written by hand and does the same thing as the
 modifications we made in the GUI.
