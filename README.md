@@ -200,3 +200,7 @@ wrappers to Vivado's lower level TCL functions.
 You can see an example at [block_design.tcl](block_design.tcl) in this repository,
 which I've written by hand and does the same thing as the
 modifications we made in the GUI.
+
+## Further resources
+
+Coming soon...
