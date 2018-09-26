@@ -67,7 +67,7 @@ if it's not already installed.
 ## Key files in the SDK
 
 Start by looking at one of the example designs, in the
-`examples/red-pitaya/led-blinker]` directory.
+`examples/red-pitaya/led-blinker` directory.
 You'll see that there are only a few files required to produce a
 basic working instrument.
 
