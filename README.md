@@ -151,3 +151,53 @@ Congratulations: you've produced your first instrument!
 ## Modifying an existing design
 
 Next, we'll take an existing design and modify it to do what we want.
+We're going to modify the `adc-dac` example design, to take 1 ADC
+input and tee it off.
+One input will be sent directly to DAC 1. The other will be filtered
+and sent to DAC 2.
+
+1. Copy the adc-dac example design to a new folder:
+```
+mkdir instruments
+cp -r examples/red-pitaya/adc-dac instruments
+mv instruments/adc-dac instruments/new
+```
+1. Add `fpga/cores/boxcar_filter_v1_0` to the `cores` section in
+   `config.yml`
+1. Build the block design:
+```make VIVADO_VERSION=2017.4 CONFIG=instruments/new/config.yml
+block_design```
+1. We now need to modify the block design. Add the boxcar filter IP
+   (CTRL+I, type "boxcar" and double click the boxcar filter).
+1. Double click on the boxcar filter block, and change the data width
+   to 14 to match the ADCs and DACs.
+1. Connect the `adc_clk` output of the `adc_dac` block to the `clk`
+   pin of the boxcar filter.
+1. Connect the `adc2` output of the `adc_dac` block to the `din` port
+   of the boxcar filter.
+1. Delete the connection from the `dac1` output of the `ctl` block to
+   the `dac2` input of the `adc_dac` block.
+1. Connect the `dout` of the boxcar filter to the `dac2` input of the
+   `adc_dac` block.
+1. Save the block design (CTRL+S). Then export it as a TCL script,
+   overwriting the block_design.tcl one, by clicking File -> Export ->
+   Export Block Design and setting the file name appropriately.
+1. Close Vivado
+1. Build and run the instrument:
+```make VIVADO_VERSION=2017.4 CONFIG=instruments/new/config.yml HOST=<Red Pitaya IP address> run```
+
+You should now find that if you put a noisy signal on input 1, you'll
+see the same signal on output 1 but a slighly less noisy signal on
+output 2.
+
+#### A quick note
+
+The TCL file produced by Vivado is very verbose.
+While it can be checked in to version control, it's not particularly
+easy to see what changes have been made.
+An alternative workflow is to make modifications to the original
+`block_design.tcl` by hand, using the functions Koheron provides as
+wrappers to Vivado's lower level TCL functions.
+You can see an example at [block_design.tcl]() in this repository,
+which I've written by hand and does the same thing as the
+modifications we made in the GUI.
