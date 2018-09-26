@@ -186,7 +186,7 @@ mv instruments/adc-dac instruments/new
 ```make VIVADO_VERSION=2017.4 CONFIG=instruments/new/config.yml HOST=<Red Pitaya IP address> run```
 
 You should now find that if you put a noisy signal on input 1, you'll
-see the same signal on output 1 but a slighly less noisy signal on
+see the same signal on output 1 but a slightly less noisy signal on
 output 2.
 
 #### A quick note
