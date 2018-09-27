@@ -38,9 +38,8 @@ connect_port_pin led_o [get_slice_pin [ctl_pin led] 7 0]
 #   connect_pins [ctl_pin dac$i] adc_dac/dac[expr $i+1]
 #   connect_pins [sts_pin adc$i] adc_dac/adc[expr $i+1]
 # }
-connect_pins [ctl_pin dac0] adc_dac/dac1
 connect_pins [sts_pin adc0] adc_dac/adc1
 connect_pins [sts_pin adc1] adc_dac/adc2
 
-## Useful resources
-
+# Loop ADC2 back to DAC1 to compare filtered and unfiltered
+connect_pins adc_dac/adc2 adc_dac/dac1
