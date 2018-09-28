@@ -64,6 +64,20 @@ We'll be using Vivado 2017.4, which can be downloaded from the
 [Xilinx website](https://www.xilinx.com/products/design-tools/vivado.html)
 if it's not already installed.
 
+The SDK has a number of dependencies.
+On the workstations in the PSFC Red Pitaya lab and their clones
+(mfews01-09), these dependencies are already installed.
+For other systems running Ubuntu OS, the dependencies can be installed
+semi-automatically by running `make setup` from the SDK directory.
+Note that this requires `sudo` permissions, and parts of the
+installation may fail, such as the `npm` installation of packages.
+If this happens, or you're using other Linux OSes, the required
+dependencies can be found by looking at the `setup` targets in the
+Makefile, and installed manually.
+
+The SDK does not support Windows.
+Vivado does not support macOS, so neither does the Koheron SDK.
+
 ## Key files in the SDK
 
 Start by looking at one of the example designs, in the
@@ -203,6 +217,10 @@ output 2.
 The TCL file produced by Vivado when exporting the block design is very verbose.
 While it can be checked in to version control, it's not particularly
 easy to see what changes have been made.
+Small changes in the GUI can result in significant differences in the
+TCL script Vivado writes, which causes unnecessarily large changesets to
+be recorded in version control.
+
 An alternative workflow is to make modifications to the original
 `block_design.tcl` by hand.
 In the Vivado GUI, there is a TCL console underneath the block
@@ -224,7 +242,32 @@ scripts which are extremely concise and readable.
 You can see an example at [block_design.tcl](block_design.tcl) in this repository,
 which I've modified from the example design by hand and which does the
 same thing as the modifications we made in the GUI.
+You can find the source code for these helper functions in
+`fpga/lib/utilities.tcl` in the SDK repository, and take a look at some
+of the [examples](https://www.koheron.com/software-development-kit/documentation/fpga/tcl).
 
 ## Further resources
 
-Coming soon...
+The following resources may be of use to those wishing to progress on
+past this introductory workshop.
+
+* Web page for the SDK:
+  https://www.koheron.com/software-development-kit/
+* Documentation:
+  https://www.koheron.com/software-development-kit/documentation/
+* Pavel Demin's notes on developing for the Red Pitaya, which inspired
+  the Koheron SDK: http://pavel-demin.github.io/red-pitaya-notes/
+* The Vivado TCL reference guide, containing all the commands supported
+  by Vivado (for the adventurous):
+  https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_4/ug835-vivado-tcl-commands.pdf
+* For those interested in developing their own IP cores for inclusion in
+  the SDK, a good introduction to the VHDL language for programming
+  FPGAs is provided by the Free Range VHDL book (available as a free PDF):
+  http://freerangefactory.org/pdf/df344hdh4h8kjfh3500ft2/free_range_vhdl.pdf
+* Additionally, there are a large number of open-source IP cores for
+  FPGAs available at the [Free Range
+  Factory](http://freerangefactory.org/cores.html) and [Open
+  Cores](https://opencores.org/).
+
+In addition, any further questions or comments can be directed to me by
+raising an issue here in the Github repository.
